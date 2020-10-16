@@ -11,9 +11,13 @@ app.use((res, next) => {
 
 
 app.get('/date', (req, res) => {
-  axios.get(`https://svatky.vanio.cz/api/${req.query.date}`)
+  if (req.query.date)  
+    axios.get(`https://svatky.vanio.cz/api/${req.query.date}`)
     .then(response => res.send(response.data))
     .catch(err => console.log(err));
+  else
+     res.send('incorrect query');
+  
 });
 
 
