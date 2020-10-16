@@ -11,12 +11,14 @@ app.use((res, next) => {
 
 
 app.get('/date', (req, res) => {
-  if (req.query.date)  
-    axios.get(`https://svatky.vanio.cz/api/${req.query.date}`)
+  
+  axios.get(`https://svatky.vanio.cz/api/${req.query.date}`)
     .then(response => res.send(response.data))
-    .catch(err => console.log(err));
-  else
-     res.send('incorrect query');
+    .catch(error => {
+      console.log(error);
+      res.status(500)
+      res.render('error', { error: err })
+    });
   
 });
 
