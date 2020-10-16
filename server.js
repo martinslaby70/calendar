@@ -10,7 +10,7 @@ app.use((res, next) => {
 });
 
 
-app.get('/date', function(req, res) {
+app.get('/date', (req, res) => {
   axios.get(`https://svatky.vanio.cz/api/${req.query.date}`)
     .then(response => res.send(response.data))
     .catch(err => console.log(err));
