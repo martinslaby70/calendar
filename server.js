@@ -1,9 +1,9 @@
-import express from 'express';
-import axios from 'axios';
+const express = require('express');
+const axios = require('axios');
 
 const app = express();
 
-app.use((res, next) => {
+app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "*")
   next();
